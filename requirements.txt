@@ -1,0 +1,7 @@
+atlassian_python_api==3.41.3
+markdownify==0.11.6
+openai==1.7.0
+PyGithub==2.1.1
+Requests==2.31.0
+streamlit==1.27.2
+tqdm==4.65.0
