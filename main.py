@@ -9,9 +9,7 @@ from atlassian import Confluence
 from markdownify import markdownify as md
 from atlassian import Jira
 
-plain_key = "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"
-plaint_key2 = "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"
-client = OpenAI(api_key=plain_key)
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 mynewlist= []
 
 
@@ -22,7 +20,7 @@ with open('file_ids.pkl', 'rb') as f:
 
 st.title("ChatGPT-like File Assistance")
 
-openai.api_key = plain_key
+# openai.api_key = plain_key
 
 import time
 import json
@@ -74,8 +72,7 @@ def search_github(keyword: str):
     """
 
     print('Searching GitHub using keyword: {}'.format(keyword))
-    # token = st.secrets["github_api_key"]
-    token = plaint_key2
+    token = st.secrets["github_api_key"]
     # initialize and authenticate GitHub API
     auth = Github(token)
     # set-up query
@@ -158,8 +155,7 @@ if "count" not in st.session_state:
     st.session_state.count = 0
 
 endpoint = "https://api.openai.com/v1/files"
-headers = {"Authorization":"Bearer " + plain_key}
-# headers = {"Authorization":"Bearer " + st.secrets["OPENAI_API_KEY"]}
+headers = {"Authorization":"Bearer " + st.secrets["OPENAI_API_KEY"]}
 if "file_list" not in st.session_state:
     file_json = requests.get('https://api.openai.com/v1/files',headers=headers).json()
     st.session_state.file_list = [i["filename"] for i in file_json["data"]]
