@@ -9,7 +9,7 @@ from atlassian import Confluence
 from markdownify import markdownify as md
 from atlassian import Jira
 
-client = OpenAI()
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 mynewlist= []
 
 
