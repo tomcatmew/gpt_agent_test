@@ -10,6 +10,7 @@ from markdownify import markdownify as md
 from atlassian import Jira
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+# client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 mynewlist= []
 
 
@@ -106,7 +107,7 @@ def searchJira(keyword) :
     jira = Jira(
     url='https://tomcatmew.atlassian.net',
     username='helltomcat@gmail.com',
-    password='ATATT3xFfGF0apgrO_nGLJFUW2uCLZArGGy3BVPJyuMkMpKDCIhmO3umNrkqN-O-a-8MsYJUe9RdolF3cMUWcnTfGbL5--P6Gl9yeL7KDfND1-3OgV0wsqWYjQd-w6jf9GgE87Jctxzm1ZhEc9Suu8j-RHvT_SzPwx0oiZn4DeyRmGkzH-6UrLw=F5AD15A6')
+    password='ATATT3xFfGF0BqPCKj36QHkh_30TpjAIRv1q-anV-V1c5NPdvoro6x_K4abj61t31dkEFIyLccznqUUcv2rTd3A-dphzlGisqJimppDQJhVTmrm9nXZTY0iQC2iDsmAVW7xUwvKi3JFkNtR0SMKKiqpXqYrPh_5rrGdCuXWVaJei0t-16QBoDks=B7B369C7')
 
     jql_request = 'project = test_project AND status NOT IN (Closed, Resolved) ORDER BY issuekey'
     issues = jira.jql(jql_request)
@@ -128,7 +129,7 @@ def searchConfluence(keyword):
     confluence = Confluence(
         url='https://tomcatmew.atlassian.net',
         username="helltomcat@gmail.com",
-        password="ATATT3xFfGF0apgrO_nGLJFUW2uCLZArGGy3BVPJyuMkMpKDCIhmO3umNrkqN-O-a-8MsYJUe9RdolF3cMUWcnTfGbL5--P6Gl9yeL7KDfND1-3OgV0wsqWYjQd-w6jf9GgE87Jctxzm1ZhEc9Suu8j-RHvT_SzPwx0oiZn4DeyRmGkzH-6UrLw=F5AD15A6")
+        password="ATATT3xFfGF0BqPCKj36QHkh_30TpjAIRv1q-anV-V1c5NPdvoro6x_K4abj61t31dkEFIyLccznqUUcv2rTd3A-dphzlGisqJimppDQJhVTmrm9nXZTY0iQC2iDsmAVW7xUwvKi3JFkNtR0SMKKiqpXqYrPh_5rrGdCuXWVaJei0t-16QBoDks=B7B369C7")
 
     ids = confluence.get_all_pages_from_space(space_key, start=0, limit=100, status=None, expand=None, content_type='page')
     find_id = 196656
